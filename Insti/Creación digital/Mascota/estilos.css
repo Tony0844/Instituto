@@ -1,0 +1,27 @@
+#titulo{
+    text-align: center;
+
+}
+
+.mi_perrita{
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+}
+
+.mi_perrita img{
+    width: 25%;
+    height: auto;
+
+}
+
+.texto {
+  display: flex;
+  flex-direction: column; 
+  gap: 10px;               
+}
+
+.lista_cosas_gusta {
+  padding-left: 20px;
+}

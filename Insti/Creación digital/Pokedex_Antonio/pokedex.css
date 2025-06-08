@@ -1,0 +1,123 @@
+body{
+    font-family: sans-serif;
+}
+
+h1{
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.nombre-pokemon{
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100px;
+}
+
+
+/* Bulbasur*/
+.bulbasur, .ivysaur, .venusaur{
+    border: 2px black solid;
+    background: linear-gradient(to bottom, green, violet);
+    border-radius: 10px;
+    float: left;
+    margin: 25px;
+}
+
+.bulbasur:hover, .ivysaur:hover, .venusaur:hover{
+    opacity: 0.7;
+}
+
+
+
+
+/* Charmander*/
+.charmander, .charmaleon{
+    border: 2px black solid;
+    background-color: rgb(240, 106, 106);
+    border-radius: 10px;
+    float: left;
+    margin: 25px;
+}
+
+.charizard{
+    border: 2px black solid;
+    background: linear-gradient(to bottom, rgb(240, 106, 106),rgb(135, 212, 243));
+    border-radius: 10px;
+    float: left;
+    margin: 25px;
+}
+
+.charmander:hover, .charmaleon:hover, .charizard:hover{
+    opacity: 0.7;
+}
+
+
+
+/*Squirtle*/
+.squirtle, .wartortle, .blastoise{
+    border: 2px black solid;
+    background-color: rgb(72, 179, 211);
+    border-radius: 10px;
+    float: left;
+    margin: 25px;
+}
+
+.squirtle:hover, .wartortle:hover, .blastoise:hover{
+    opacity: 0.7;
+}
+
+
+
+
+/*Caterpie*/
+.caterpie, .metapod{
+    border: 2px black solid;
+    background-color: rgb(110, 187, 10);
+    border-radius: 10px;
+    float: left;
+    margin: 25px;
+}
+
+.butterfree{
+    border: 2px black solid;
+    background: linear-gradient(to bottom, rgb(0, 253, 0), rgb(72, 179, 211));
+    border-radius: 10px;
+    float: left;
+    margin: 25px;
+}
+
+.caterpie:hover, .metapod:hover, .butterfree:hover{
+    opacity: 0.7;
+}
+
+
+/*Weedle*/
+.weedle, .kakuna, .beedrill{
+    border: 2px black solid;
+    background: linear-gradient(to bottom,  rgb(0, 253, 0), violet);
+    border-radius: 10px;
+    float: left;
+    margin: 25px;
+}
+
+.weedle:hover, .kakuna:hover, .beedrill:hover{
+    opacity: 0.7;
+}
+
+
+/*Pidgey*/
+.pidgey, .pidgeotto, .pidgeot{
+    border: 2px black solid;
+    background: linear-gradient(to bottom, grey, rgb(72, 179, 211));
+    border-radius: 10px;
+    float: left;
+    margin: 25px;
+}
+
+.pidgey:hover, .pidgeotto:hover, .pidgeot:hover{
+    opacity: 0.7;
+}
