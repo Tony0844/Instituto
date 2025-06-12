@@ -1,0 +1,136 @@
+body{
+    font-family: sans-serif;
+}
+
+h1{
+    text-align: center;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.nombre-pokemon{
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100px;
+}
+
+/* Bulbasur*/
+.cloyster{
+    border: 2px black solid;
+    background: linear-gradient(to bottom, grey, rgb(83, 49, 83));
+    border-radius: 10px;
+    float: left;
+    margin: 25px;
+}
+
+.cloyster:hover{
+    opacity: 0.7;
+}
+
+/*Gastly*/
+.haunter, .gengar{
+    border: 2px black solid;
+    background-color: rgb(128, 103, 128);
+    border-radius: 10px;
+    float: left;
+    margin: 25px;
+}
+
+.gastly{
+    border: 2px black solid;
+    background: linear-gradient(to bottom, rgb(83, 49, 83), rgb(34, 34, 34));
+    border-radius: 10px;
+    float: left;
+    margin: 25px;
+}
+
+.gastly:hover, .haunter:hover, .gengar:hover{
+    opacity: 0.7;
+}
+
+/*Onix*/
+.onix{
+    border: 2px black solid;
+    background-color: grey;
+    border-radius: 10px;
+    float: left;
+    margin: 25px;
+}
+
+/*Drowzee*/
+.drowzee, .hypno{
+    border: 2px black solid;
+    background-color: pink;
+    border-radius: 10px;
+    float: left;
+    margin: 25px;
+}
+
+.drowzee:hover, .hypno:hover{
+    opacity: 0.7;
+}
+
+
+/*Krabby*/
+.krabby, .kingler{
+    border: 2px black solid;
+    background:linear-gradient(to bottom, orange, white);
+    border-radius: 10px;
+    float: left;
+    margin: 25px;
+}
+
+.krabby:hover, .kingler:hover   {
+    opacity: 0.7;
+}
+
+
+/*Voltorb*/
+.voltorb{
+    border: 2px black solid;
+    background: linear-gradient(to bottom, rgb(243, 126, 145), white);
+    border-radius: 10px;
+    float: left;
+    margin: 25px;
+}
+
+.voltorb-de-hisui{
+    border: 2px black solid;
+    background: linear-gradient(to bottom, orange, white);
+    border-radius: 10px;
+    float: left;
+    margin: 25px;
+}
+
+
+.voltorb:hover, .voltorb-de-hisui:hover   {
+    opacity: 0.7;
+}
+
+
+/*Electrode*/
+.electrode{
+    border: 2px black solid;
+    background: linear-gradient(to bottom,  white, pink);
+    border-radius: 10px;
+    float: left;
+    margin: 25px;
+}
+
+.electrode-de-hisui{
+    border: 2px black solid;
+    background: linear-gradient(to bottom, rgb(222, 192, 134), #FF6600);
+    border-radius: 10px;
+    float: left;
+    margin: 25px;
+
+}
+
+
+.electrode:hover, .electrode-de-hisui:hover{
+    opacity: 0.7;
+}
+
