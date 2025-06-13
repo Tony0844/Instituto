@@ -35,10 +35,10 @@ while True:
         util.listar_vuelos(util.vuelos_del_usuario)
 
     elif op == 4: # 4 opción
-        util.buscar_por_aeropuerto(util.vuelos)
+        util.buscar_por_aeropuerto(util.vuelos_del_usuario)
 
     elif op == 5: # 5 opción
-        util.editar_eliminar_vuelos(util.vuelos)
+        util.editar_eliminar_vuelos(util.vuelos_del_usuario)
         guardar_datos(util.aeropuertos, util.vuelos)
 
     elif op == 6: # 6 opción
@@ -47,10 +47,10 @@ while True:
         opcion_sec = input(Fore.LIGHTMAGENTA_EX + "Elige una opción: ")
 
         if opcion_sec == "1":
-            guardar_datos(util.aeropuertos, util.vuelos)
+            guardar_datos(util.aeropuertos, util.vuelos_del_usuario)
             print(Fore.GREEN + "Datos guardados correctamente.")
         elif opcion_sec == "2":
-            util.aeropuertos, util.vuelos = cargar_datos()
+            util.aeropuertos, util.vuelos_del_usuario = cargar_datos()
             print(Fore.GREEN + "Datos cargados correctamente.")
         else:
             print(Fore.RED + "Error: Opción inválida.")

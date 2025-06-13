@@ -6,7 +6,6 @@ from time import sleep
 init(autoreset=True)
 
 aeropuertos =[] 
-
 vuelos = [
     {"id": "IB101","origen":"Madrid", "destino": "Barcelona", "km": 504, "plazas": 180}, #Madrid => Barcelona -- 1
     {"id": "VY450", "origen": "Barcelona", "destino": "Malaga", "km": 770, "plazas": 160}, #Barcelona => Malaga -- 2
@@ -14,6 +13,14 @@ vuelos = [
 ]
 
 vuelos_del_usuario = []
+
+modo_test = False
+
+if modo_test:
+    vuelos_del_usuario = vuelos.copy()
+    print(vuelos_del_usuario)
+else:
+    vuelos_del_usuario = []
 
 
                                                                # Retos opcionales
@@ -137,25 +144,28 @@ def listar_vuelos(vuelos_del_usuario):
 
 # Terminado
 def buscar_por_aeropuerto(vuelos):
-    codigo_a_buscar = input("Código IATA: ").strip()
-    vuelos_filtrados = []
+    if not vuelos:
+        print(Fore.RED + "Error: No hay vuelos registrados.")
+        return
+
+    codigo = input(Fore.LIGHTMAGENTA_EX + "Introduce el código o nombre del aeropuerto: ").strip().lower()
+
+    encontrados = []
 
     for vuelo in vuelos:
-        if vuelo['origen'] == codigo_a_buscar or vuelo['destino'] == codigo_a_buscar:
-            vuelos_filtrados.append(vuelo)
-        
-    if vuelos_filtrados:
-        print(Fore.LIGHTMAGENTA_EXMAGENTA + f"Estos son los vuelos con el código: {codigo_a_buscar}")
-        for i in vuelos_filtrados:
-            print(Fore.YELLOW + f"{i['origen']} => {i['destino']} -- Km: {i['km']}")
-        
-        sleep(2)
-        clear_terminal()
-    else:
-        print(f"No se encontraron vuelos con el código {codigo_a_buscar}")
-        sleep(2)
-        clear_terminal()
+        origen = vuelo['origen'].lower()
+        destino = vuelo['destino'].lower()
 
+        if codigo in origen or codigo in destino:
+            encontrados.append(vuelo)
+
+    if encontrados:
+        for i, vuelo in enumerate(encontrados, start=1):
+            print(Fore.YELLOW + f"{i}. Origen: {vuelo['origen']}, Destino: {vuelo['destino']}, Km: {vuelo['km']}")
+    else:
+        print(Fore.RED + f"No se encontraron vuelos con el aeropuerto '{codigo}'.")
+
+   
 
 # Funciones opcionales
 
