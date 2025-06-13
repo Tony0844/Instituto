@@ -11,7 +11,6 @@ vuelos = [
     {"origen":"Madrid", "destino": "Barcelona","id": "IB101", "km": 504, "plazas": 180}, #Madrid => Barcelona -- 1
     {"origen": "Barcelona", "destino": "Malaga", "id": "VY450", "km": 770, "plazas": 160}, #Barcelona => Malaga -- 2
     {"origen": "Malaga", "destino": "Madrid", "id": "UX333", "km": 430, "plazas": 220} #Malaga => Madrid -- 3
-
 ]
 
 vuelos_del_usuario = []
@@ -21,7 +20,7 @@ vuelos_del_usuario = []
 # Editar o eliminar vuelos -- Terminado
 # Guardar / cargar aeropurtos y vuelos 'JSON' -- Terminado
 # Mostrar estadisticas (vuelo mas largo, promedio de km)
-# Colores en la 'CLI' usadno el modulo colorama -- Terminado
+# Colores en la 'CLI' usando el modulo colorama -- Terminado
     #Exitos => Verde
     #Errores => Rojo
     #Inputs => Magenta
@@ -49,7 +48,7 @@ def introduce_codigo(msg):
                 break
 
         if len(codigo) == 3 and codigo.isalpha() and codigo.isupper() and not existe:
-            print(Fore.LIGHTMAGENTA_EX + f"El codigo IATA '{codigo}' ha sido añadido")
+            print(Fore.GREEN + f"El codigo IATA '{codigo}' ha sido añadido")
             return codigo
         elif any(a['codigo'] == codigo for a in aeropuertos):
             print(Fore.RED + "Error: El codigo ya esta en la lista de aerpuertos")
@@ -80,6 +79,8 @@ def nuevo_aeropuerto(lista): #lista = aeropuertos
 
     lista.append(nuevo)
     print(Fore.GREEN + f" Aeropuerto '{nombre}' añadido correctamente.")
+    sleep(2)
+    clear_terminal()
 
 #Terminado
 def nuevo_vuelo(vuelos, aeropuertos):
@@ -118,13 +119,21 @@ def nuevo_vuelo(vuelos, aeropuertos):
     print(Fore.GREEN + linea_contenido)
     print(Fore.GREEN + borde_inferior)
 
+    sleep(2)
+    clear_terminal()
+
 # Terminado    
-def listar_vuelos(vuelos):
+def listar_vuelos(vuelos_del_usuario):
     if not vuelos_del_usuario:
         print("No hay vuelos disponibles")
 
     for i, vuelo in enumerate(vuelos_del_usuario, start=1):
             print(Fore.YELLOW + f"{i}. {vuelo['id']}: {vuelo['origen']} => {vuelo['destino']} -- KM'S:{vuelo['km']} PLAZAS:{vuelo['plazas']}")
+
+
+    sleep(2)
+    clear_terminal()
+
 
 # Terminado
 def buscar_por_aeropuerto(vuelos):
@@ -140,8 +149,10 @@ def buscar_por_aeropuerto(vuelos):
         for i in vuelos_filtrados:
             print(Fore.YELLOW + f"{i['origen']} => {i['destino']} -- Km: {i['km']}")
 
+        clear_terminal()
     else:
         print(f"No se encontraron vuelos con el código {codigo_a_buscar}")
+        clear_terminal()
 
 
 # Funciones opcionales

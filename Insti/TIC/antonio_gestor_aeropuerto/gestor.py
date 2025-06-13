@@ -33,8 +33,6 @@ while True:
         print(Fore.BLUE + "Vuelos")
         print(Fore.BLUE + "------")
         util.listar_vuelos(util.vuelos_del_usuario)
-        sleep(2)
-        print("\n")
 
     elif op == 4: # 4 opción
         util.buscar_por_aeropuerto(util.vuelos)
@@ -42,6 +40,7 @@ while True:
     elif op == 5: # 5 opción
         util.editar_eliminar_vuelos(util.vuelos)
         guardar_datos(util.aeropuertos, util.vuelos)
+        
     elif op == 6: # 6 opción
         print("1. Guardar datos")
         print("2. Cargar datos")
