@@ -8,9 +8,9 @@ init(autoreset=True)
 aeropuertos =[] 
 
 vuelos = [
-    {"origen":"Madrid", "destino": "Barcelona","id": "IB101", "km": 504, "plazas": 180}, #Madrid => Barcelona -- 1
-    {"origen": "Barcelona", "destino": "Malaga", "id": "VY450", "km": 770, "plazas": 160}, #Barcelona => Malaga -- 2
-    {"origen": "Malaga", "destino": "Madrid", "id": "UX333", "km": 430, "plazas": 220} #Malaga => Madrid -- 3
+    {"id": "IB101","origen":"Madrid", "destino": "Barcelona", "km": 504, "plazas": 180}, #Madrid => Barcelona -- 1
+    {"id": "VY450", "origen": "Barcelona", "destino": "Malaga", "km": 770, "plazas": 160}, #Barcelona => Malaga -- 2
+    {"id": "UX333", "origen": "Malaga", "destino": "Madrid", "km": 430, "plazas": 220} #Malaga => Madrid -- 3
 ]
 
 vuelos_del_usuario = []
@@ -24,7 +24,7 @@ vuelos_del_usuario = []
     #Exitos => Verde
     #Errores => Rojo
     #Inputs => Magenta
-
+    #Info => Amarillo
 
 
 
@@ -87,8 +87,8 @@ def nuevo_vuelo(vuelos, aeropuertos):
     id_vuelo = input(Fore.LIGHTMAGENTA_EX + "ID del vuelo: ")
 
     vuelo = input(Fore.LIGHTMAGENTA_EX + "¿Dónde estás y a dónde quieres ir? (Origen,Destino): ").split(',')
-    km = input(Fore.LIGHTMAGENTA_EX + "KM'S: ")
-    plazas = input(Fore.LIGHTMAGENTA_EX + "PLAZAS: ")
+    km = int(input(Fore.LIGHTMAGENTA_EX + "KM'S: "))
+    plazas = int(input(Fore.LIGHTMAGENTA_EX + "PLAZAS: "))
     try:
         origen, destino = vuelo
         origen = origen.strip().upper()
@@ -148,10 +148,12 @@ def buscar_por_aeropuerto(vuelos):
         print(Fore.LIGHTMAGENTA_EXMAGENTA + f"Estos son los vuelos con el código: {codigo_a_buscar}")
         for i in vuelos_filtrados:
             print(Fore.YELLOW + f"{i['origen']} => {i['destino']} -- Km: {i['km']}")
-
+        
+        sleep(2)
         clear_terminal()
     else:
         print(f"No se encontraron vuelos con el código {codigo_a_buscar}")
+        sleep(2)
         clear_terminal()
 
 
@@ -218,9 +220,31 @@ def guardar_datos(aeropuertos, vuelos, archivo="datos.json"):
 
 #Terminado
 def cargar_datos(archivo="datos.json"):
+
     try:
         with open(archivo, "r", encoding="utf-8") as f:
             datos = json.load(f)
             return datos.get("aeropuertos", []), datos.get("vuelos", [])
     except FileNotFoundError:
         return [], []
+    
+
+#Terminado
+def mostrar_estadisticas(vuelos):
+    vuelo_km = []
+    
+    try:
+        for i in vuelos:
+            vuelo_km.append(i['km']) 
+
+        mas_largo = max(vuelo_km)
+        total_km = sum(vuelo_km)
+        media_km = total_km / len(vuelo_km)
+        
+        print(Fore.YELLOW + f"Vuelo mas largo: {mas_largo} km")
+        print(Fore.YELLOW + f"Media km: {media_km:.2f}km")
+        sleep(2)
+        clear_terminal()
+    except ValueError:
+        print(Fore.RED + "Error: No hay vuelos en la lista")
+        return

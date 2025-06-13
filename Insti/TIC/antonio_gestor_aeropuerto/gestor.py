@@ -40,7 +40,7 @@ while True:
     elif op == 5: # 5 opción
         util.editar_eliminar_vuelos(util.vuelos)
         guardar_datos(util.aeropuertos, util.vuelos)
-        
+
     elif op == 6: # 6 opción
         print("1. Guardar datos")
         print("2. Cargar datos")
@@ -57,7 +57,7 @@ while True:
         sleep(1)
 
     elif op ==7: # 7 opción
-        pass
+        util.mostrar_estadisticas(util.vuelos_del_usuario)
 
     elif op == 8: #8 opción
         util.clear_terminal() #Limpia la terminal
