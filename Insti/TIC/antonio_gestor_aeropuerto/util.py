@@ -7,6 +7,11 @@ init(autoreset=True)
 
 aeropuertos =[] 
 
+print("Hello world")
+
+
+
+
 vuelos = [
     {"codigo_origen": "MAD", "origen":"Madrid","codigo_destino": "BCN", "destino": "Barcelona","id": "IB101", "km": 504, "plazas": 180}, #Madrid => Barcelona -- 1
     {"codigo_origen": "BCN","origen": "Barcelona","codigo_destino":"AGP", "destino": "Malaga", "id": "VY450", "km": 770, "plazas": 160}, #Barcelona => Malaga -- 2
