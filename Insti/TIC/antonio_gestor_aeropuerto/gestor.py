@@ -30,9 +30,9 @@ while True:
 
     elif op == 3: # 3 opción
         print("\n")
-        print("Vuelos")
-        print("------")
-        util.listar_vuelos(util.vuelos)
+        print(Fore.BLUE + "Vuelos")
+        print(Fore.BLUE + "------")
+        util.listar_vuelos(util.vuelos_del_usuario)
         sleep(2)
         print("\n")
 
@@ -45,16 +45,16 @@ while True:
     elif op == 6: # 6 opción
         print("1. Guardar datos")
         print("2. Cargar datos")
-        opcion_sec = input("Elige una opción: ")
+        opcion_sec = input(Fore.LIGHTMAGENTA_EX + "Elige una opción: ")
 
         if opcion_sec == "1":
             guardar_datos(util.aeropuertos, util.vuelos)
-            print("Datos guardados correctamente.")
+            print(Fore.GREEN + "Datos guardados correctamente.")
         elif opcion_sec == "2":
             util.aeropuertos, util.vuelos = cargar_datos()
-            print("Datos cargados correctamente.")
+            print(Fore.GREEN + "Datos cargados correctamente.")
         else:
-            print("Opción inválida.")
+            print(Fore.RED + "Error: Opción inválida.")
         sleep(1)
 
     elif op ==7: # 7 opción

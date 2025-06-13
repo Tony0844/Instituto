@@ -7,15 +7,10 @@ init(autoreset=True)
 
 aeropuertos =[] 
 
-print("Hello world")
-
-
-
-
 vuelos = [
-    {"codigo_origen": "MAD", "origen":"Madrid","codigo_destino": "BCN", "destino": "Barcelona","id": "IB101", "km": 504, "plazas": 180}, #Madrid => Barcelona -- 1
-    {"codigo_origen": "BCN","origen": "Barcelona","codigo_destino":"AGP", "destino": "Malaga", "id": "VY450", "km": 770, "plazas": 160}, #Barcelona => Malaga -- 2
-    {"codigo_origen": "AGP","origen": "Malaga","codigo_destino":"MAD", "destino": "Madrid", "id": "UX333", "km": 430, "plazas": 220} #Malaga => Madrid -- 3
+    {"origen":"Madrid", "destino": "Barcelona","id": "IB101", "km": 504, "plazas": 180}, #Madrid => Barcelona -- 1
+    {"origen": "Barcelona", "destino": "Malaga", "id": "VY450", "km": 770, "plazas": 160}, #Barcelona => Malaga -- 2
+    {"origen": "Malaga", "destino": "Madrid", "id": "UX333", "km": 430, "plazas": 220} #Malaga => Madrid -- 3
 
 ]
 
@@ -27,6 +22,11 @@ vuelos_del_usuario = []
 # Guardar / cargar aeropurtos y vuelos 'JSON' -- Terminado
 # Mostrar estadisticas (vuelo mas largo, promedio de km)
 # Colores en la 'CLI' usadno el modulo colorama -- Terminado
+    #Exitos => Verde
+    #Errores => Rojo
+    #Inputs => Magenta
+
+
 
 
 #Funciones obligatorias
@@ -49,7 +49,7 @@ def introduce_codigo(msg):
                 break
 
         if len(codigo) == 3 and codigo.isalpha() and codigo.isupper() and not existe:
-            print(Fore.GREEN + f"El codigo IATA '{codigo}' ha sido añadido")
+            print(Fore.LIGHTMAGENTA_EX + f"El codigo IATA '{codigo}' ha sido añadido")
             return codigo
         elif any(a['codigo'] == codigo for a in aeropuertos):
             print(Fore.RED + "Error: El codigo ya esta en la lista de aerpuertos")
@@ -62,7 +62,7 @@ def introduce_codigo(msg):
  
 # Terminada
 def nuevo_aeropuerto(lista): #lista = aeropuertos
-    codigo = introduce_codigo(Style.RESET_ALL + "Código IATA: ") #Funcion anterior (introduce_codigo())
+    codigo = introduce_codigo(Fore.LIGHTMAGENTA_EX + "Código IATA: ") #Funcion anterior (introduce_codigo())
 
     duplicado = False
     for i in lista: #lista = aeropuertos
@@ -73,23 +73,21 @@ def nuevo_aeropuerto(lista): #lista = aeropuertos
         print(Fore.RED + f"Error: Ya existe un aeropuerto con el código '{codigo}'.")
         return
 
-    nombre = input("Introduce el nombre del aeropuerto: ").strip()
-    ciudad = input("Introduce la ciudad: ").strip()
+    nombre = input(Fore.LIGHTMAGENTA_EX + "Introduce el nombre del aeropuerto: ").strip()
+    ciudad = input(Fore.LIGHTMAGENTA_EX + "Introduce la ciudad: ").strip()
 
-    nuevo = {
-        "codigo": codigo,
-        "nombre": nombre,
-        "ciudad": ciudad
-    }
+    nuevo = {"codigo": codigo, "nombre": nombre, "ciudad": ciudad}
 
     lista.append(nuevo)
     print(Fore.GREEN + f" Aeropuerto '{nombre}' añadido correctamente.")
 
 #Terminado
 def nuevo_vuelo(vuelos, aeropuertos):
-    id_vuelo = input("ID del vuelo: ")
+    id_vuelo = input(Fore.LIGHTMAGENTA_EX + "ID del vuelo: ")
 
-    vuelo = input(Fore.WHITE + "¿Dónde estás y a dónde quieres ir? (Origen,Destino): ").split(',')
+    vuelo = input(Fore.LIGHTMAGENTA_EX + "¿Dónde estás y a dónde quieres ir? (Origen,Destino): ").split(',')
+    km = input(Fore.LIGHTMAGENTA_EX + "KM'S: ")
+    plazas = input(Fore.LIGHTMAGENTA_EX + "PLAZAS: ")
     try:
         origen, destino = vuelo
         origen = origen.strip().upper()
@@ -105,11 +103,11 @@ def nuevo_vuelo(vuelos, aeropuertos):
             print(Fore.RED + "Error: Este vuelo ya existe")
             return
 
-    vuelo = {"id": id_vuelo, "origen": origen, "destino": destino}
+    vuelo = {"id": id_vuelo, "origen": origen, "destino": destino, "km": km, "plazas": plazas}
     vuelos_del_usuario.append(vuelo)
 
     # el mensaje 
-    mensaje = f"{vuelo['id']}: {vuelo['origen']} => {vuelo['destino']}"
+    mensaje = f"{vuelo['id']}: {vuelo['origen']} => {vuelo['destino']} -- KM'S:{vuelo['km']} PLAZAS:{vuelo['plazas']}"
     ancho = len(mensaje)
     borde_superior = "┌" + "─" * (ancho + 2) + "┐"
     borde_inferior = "└" + "─" * (ancho + 2) + "┘"
@@ -120,13 +118,13 @@ def nuevo_vuelo(vuelos, aeropuertos):
     print(Fore.GREEN + linea_contenido)
     print(Fore.GREEN + borde_inferior)
 
-
-
 # Terminado    
 def listar_vuelos(vuelos):
-    
-    for i, vuelo in enumerate(vuelos, start=1):
-        print(Fore.YELLOW + f"{i}. {vuelo['origen']} => {vuelo['destino']} -- KM: {vuelo['km']}")
+    if not vuelos_del_usuario:
+        print("No hay vuelos disponibles")
+
+    for i, vuelo in enumerate(vuelos_del_usuario, start=1):
+            print(Fore.YELLOW + f"{i}. {vuelo['id']}: {vuelo['origen']} => {vuelo['destino']} -- KM'S:{vuelo['km']} PLAZAS:{vuelo['plazas']}")
 
 # Terminado
 def buscar_por_aeropuerto(vuelos):
@@ -138,7 +136,7 @@ def buscar_por_aeropuerto(vuelos):
             vuelos_filtrados.append(vuelo)
         
     if vuelos_filtrados:
-        print(Fore.MAGENTA + f"Estos son los vuelos con el código: {codigo_a_buscar}")
+        print(Fore.LIGHTMAGENTA_EXMAGENTA + f"Estos son los vuelos con el código: {codigo_a_buscar}")
         for i in vuelos_filtrados:
             print(Fore.YELLOW + f"{i['origen']} => {i['destino']} -- Km: {i['km']}")
 
@@ -153,9 +151,6 @@ def editar_eliminar_vuelos(vuelos):
 
     for n, i in enumerate(vuelos):
         print(Fore.YELLOW + f"{n}. {i['origen']} => {i['destino']} -- KM: {i['km']}")
-
-
-
 
     editar = input("¿Que quieres hacer, editar o eliminar?: ").lower()
     if editar == "eliminar":    # Opcion elegida = opción
