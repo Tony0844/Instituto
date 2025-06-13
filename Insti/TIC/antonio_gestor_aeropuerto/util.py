@@ -24,9 +24,10 @@ else:
 
 
                                                                # Retos opcionales
+
 # Editar o eliminar vuelos -- Terminado
 # Guardar / cargar aeropurtos y vuelos 'JSON' -- Terminado
-# Mostrar estadisticas (vuelo mas largo, promedio de km)
+# Mostrar estadisticas (vuelo mas largo, promedio de km) -- Terminado
 # Colores en la 'CLI' usando el modulo colorama -- Terminado
     #Exitos => Verde
     #Errores => Rojo
